@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReRev Tapestry Tool</title>
+<style>
+  :root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F7F6F1;
+    --bg-tertiary: #F1EFE8;
+    --text-primary: #2C2C2A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border-tertiary: rgba(44, 44, 42, 0.15);
+    --border-secondary: rgba(44, 44, 42, 0.3);
+    --accent: #0F6E56;
+    --danger: #A32D2D;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1C1C1A;
+      --bg-secondary: #2C2C2A;
+      --bg-tertiary: #1C1C1A;
+      --text-primary: #F1EFE8;
+      --text-secondary: #B4B2A9;
+      --text-tertiary: #888780;
+      --border-tertiary: rgba(241, 239, 232, 0.15);
+      --border-secondary: rgba(241, 239, 232, 0.3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  .header {
+    background: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-tertiary);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E1F5EE;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .brand-name {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .brand-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  button {
+    background: transparent;
+    border: 0.5px solid var(--border-secondary);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  button:hover { background: var(--bg-secondary); }
+  button:active { transform: scale(0.98); }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .section {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border-tertiary);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .sec-h {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 4px;
+  }
+  .sec-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem;
+  }
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .lbl { font-size: 13px; min-width: 160px; }
+  .val { font-size: 13px; font-weight: 500; min-width: 56px; text-align: right; }
+  input[type="range"] {
+    flex: 1;
+    height: 4px;
+    appearance: none;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+  }
+  .bar {
+    display: flex;
+    height: 44px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 0.5px solid var(--border-tertiary);
+  }
+  .seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    transition: flex 0.2s;
+  }
+  .bar-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 200px repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hdr {
+    font-size: 11px;
+    color: var(--text-secondary);
+    padding: 4px 6px;
+    text-align: center;
+  }
+  .rowlbl {
+    font-size: 12px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+  }
+  .cell {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.15s;
+  }
+  .cell:hover { opacity: 0.85; }
+  .legend {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 8px 0 14px;
+    flex-wrap: wrap;
+  }
+  .chip { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 12px; height: 12px; border-radius: 3px; }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  .metric {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 14px;
+  }
+  .metric-lbl {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0 0 4px;
+  }
+  .metric-val {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+  }
+  .status {
+    font-size: 12px;
+    color: var(--text-secondary);
+    min-height: 18px;
+  }
+  .warn { color: var(--danger); font-weight: 500; }
+  @media (max-width: 720px) {
+    .container { padding: 1rem; }
+    .grid { grid-template-columns: 130px repeat(4, 1fr); }
+    .lbl { min-width: 120px; font-size: 12px; }
+    .rowlbl { font-size: 11px; }
+    .cell { font-size: 11px; padding: 8px 4px; }
+    .metrics { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">
+    <div class="brand-mark">R</div>
+    <div>
+      <div class="brand-name">Tapestry Tool</div>
+      <div class="brand-sub">ReRev Labs strategic planning</div>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="btn-save">Save</button>
+    <button id="btn-load">Load</button>
+    <button id="btn-reset">Reset</button>
+    <button id="btn-export">Export</button>
+    <span id="status" class="status"></span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <p class="sec-h">The week</p>
+    <p class="sec-sub">Forty hours, allocated across ventures. Drag to reallocate.</p>
+
+    <div class="row"><span class="lbl">BlackTech Capital</span><input type="range" id="h-btc" min="0" max="40" value="10" step="1"><span class="val" id="h-btc-out">10h</span></div>
+    <div class="row"><span class="lbl">Prismm (anchor)</span><input type="range" id="h-prismm" min="0" max="40" value="15" step="1"><span class="val" id="h-prismm-out">15h</span></div>
+    <div class="row"><span class="lbl">Super Connector dev</span><input type="range" id="h-sc" min="0" max="40" value="2" step="1"><span class="val" id="h-sc-out">2h</span></div>
+    <div class="row"><span class="lbl">ReRev pipeline</span><input type="range" id="h-pipe" min="0" max="40" value="8" step="1"><span class="val" id="h-pipe-out">8h</span></div>
+    <div class="row"><span class="lbl">ReRev content</span><input type="range" id="h-content" min="0" max="40" value="3" step="1"><span class="val" id="h-content-out">3h</span></div>
+    <div class="row"><span class="lbl">New client delivery</span><input type="range" id="h-new" min="0" max="40" value="2" step="1"><span class="val" id="h-new-out">2h</span></div>
+
+    <div style="margin-top: 1.25rem;">
+      <div class="bar" id="bar"></div>
+      <div class="bar-meta">
+        <span>Total allocated: <strong id="total">40h</strong> of 40h</span>
+        <span id="warn" class="warn"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="sec-h">The ICP fit grid</p>
+    <p class="sec-sub">Click a cell to cycle its score. Four audiences, seven service lines.</p>
+
+    <div class="legend">
+      <span class="chip"><span class="dot" style="background: #0F6E56;"></span>Strongest</span>
+      <span class="chip"><span class="dot" style="background: #9FE1CB;"></span>Strong</span>
+      <span class="chip"><span class="dot" style="background: #FAEEDA;"></span>Possible</span>
+      <span class="chip"><span class="dot" style="background: #F1EFE8;"></span>Weak</span>
+      <span class="chip"><span class="dot" style="background: transparent; border: 0.5px dashed var(--border-secondary);"></span>Not pitching</span>
+    </div>
+
+    <div class="grid">
+      <div></div>
+      <div class="hdr">Marketing<br>agencies</div>
+      <div class="hdr">Fractional<br>execs</div>
+      <div class="hdr">Boutique<br>advisory</div>
+      <div class="hdr">Interim<br>leaders</div>
+    </div>
+    <div id="grid-body" class="grid"></div>
+  </div>
+
+  <div class="section">
+    <p class="sec-h">The revenue mix</p>
+    <p class="sec-sub">Anchor plus target pipeline toward the monthly $28K goal.</p>
+
+    <div class="row"><span class="lbl">Anchor (Prismm)</span><input type="range" id="r-anchor" min="2500" max="10000" value="2500" step="500"><span class="val" id="r-anchor-out">$2,500</span></div>
+    <div class="row"><span class="lbl">One-off projects</span><input type="range" id="r-oneoff" min="0" max="30000" value="15000" step="1000"><span class="val" id="r-oneoff-out">$15,000</span></div>
+    <div class="row"><span class="lbl">Tapestry sessions</span><input type="range" id="r-tap" min="0" max="10000" value="0" step="500"><span class="val" id="r-tap-out">$0</span></div>
+    <div class="row"><span class="lbl">Content / subscriptions</span><input type="range" id="r-content" min="0" max="10000" value="0" step="500"><span class="val" id="r-content-out">$0</span></div>
+
+    <div class="metrics">
+      <div class="metric"><p class="metric-lbl">Monthly total</p><p class="metric-val" id="r-total">$17,500</p></div>
+      <div class="metric"><p class="metric-lbl">Goal gap</p><p class="metric-val" id="r-gap">$10,500</p></div>
+      <div class="metric"><p class="metric-lbl">% to goal</p><p class="metric-val" id="r-pct">63%</p></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const SCORES = [
+    {label:'Not pitching', bg:'transparent', color:'var(--text-tertiary)', border:'0.5px dashed var(--border-secondary)'},
+    {label:'Weak', bg:'#F1EFE8', color:'#2C2C2A', border:'0.5px solid var(--border-tertiary)'},
+    {label:'Possible', bg:'#FAEEDA', color:'#412402', border:'0.5px solid var(--border-tertiary)'},
+    {label:'Strong', bg:'#9FE1CB', color:'#04342C', border:'0.5px solid var(--border-tertiary)'},
+    {label:'Strongest', bg:'#0F6E56', color:'#E1F5EE', border:'0.5px solid var(--border-tertiary)'}
+  ];
+  const SERVICE_LINES = [
+    'Claude-native automation',
+    'Gmail outreach infra',
+    'Google Apps Script systems',
+    'Content automation',
+    'Workshop delivery',
+    'Custom CRM builds',
+    'AI consulting / advisory'
+  ];
+  const AUDIENCES = ['agencies','fractionals','advisory','interim'];
+  const DEFAULT_GRID = [
+    [3,4,2,4],
+    [4,3,0,3],
+    [3,4,2,4],
+    [4,3,2,2],
+    [2,2,0,2],
+    [2,3,0,3],
+    [3,3,2,3]
+  ];
+  const DEFAULT_HOURS = { btc:10, prismm:15, sc:2, pipe:8, content:3, new:2 };
+  const DEFAULT_REVENUE = { anchor:2500, oneoff:15000, tap:0, content:0 };
+  const HOUR_COLORS = { btc:'#85B7EB', prismm:'#5DCAA5', sc:'#CECBF6', pipe:'#FAC775', content:'#F5C4B3', new:'#F4C0D1' };
+  const HOUR_LABELS = { btc:'BTC', prismm:'Prismm', sc:'SC dev', pipe:'Pipeline', content:'Content', new:'New delivery' };
+  const HOUR_TEXT_COLORS = { btc:'#042C53', prismm:'#04342C', sc:'#26215C', pipe:'#412402', content:'#4A1B0C', new:'#4B1528' };
+
+  let gridState = DEFAULT_GRID.map(r => r.slice());
+
+  function renderGrid(){
+    const body = document.getElementById('grid-body');
+    body.innerHTML = '';
+    SERVICE_LINES.forEach((line, r) => {
+      const lbl = document.createElement('div');
+      lbl.className = 'rowlbl';
+      lbl.textContent = line;
+      body.appendChild(lbl);
+      AUDIENCES.forEach((_, c) => {
+        const score = gridState[r][c];
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        const sc = SCORES[score];
+        cell.style.background = sc.bg;
+        cell.style.color = sc.color;
+        cell.style.border = sc.border;
+        cell.textContent = sc.label;
+        cell.onclick = () => { gridState[r][c] = (gridState[r][c] + 1) % 5; renderGrid(); };
+        body.appendChild(cell);
+      });
+    });
+  }
+
+  function getHours(){
+    return {
+      btc: +document.getElementById('h-btc').value,
+      prismm: +document.getElementById('h-prismm').value,
+      sc: +document.getElementById('h-sc').value,
+      pipe: +document.getElementById('h-pipe').value,
+      content: +document.getElementById('h-content').value,
+      new: +document.getElementById('h-new').value
+    };
+  }
+
+  function updateHours(){
+    const h = getHours();
+    Object.keys(h).forEach(k => {
+      document.getElementById('h-'+k+'-out').textContent = h[k]+'h';
+    });
+    const total = Object.values(h).reduce((a,b) => a+b, 0);
+    document.getElementById('total').textContent = total+'h';
+    const warn = document.getElementById('warn');
+    if (total > 40) warn.textContent = 'Over by '+(total-40)+'h';
+    else if (total < 40) warn.textContent = (40-total)+'h unassigned';
+    else warn.textContent = '';
+
+    const bar = document.getElementById('bar');
+    bar.innerHTML = '';
+    Object.keys(h).forEach(k => {
+      if (h[k] === 0) return;
+      const seg = document.createElement('div');
+      seg.className = 'seg';
+      seg.style.flex = h[k];
+      seg.style.background = HOUR_COLORS[k];
+      seg.style.color = HOUR_TEXT_COLORS[k];
+      seg.textContent = h[k] >= 3 ? HOUR_LABELS[k] : '';
+      seg.title = HOUR_LABELS[k]+': '+h[k]+'h';
+      bar.appendChild(seg);
+    });
+  }
+
+  function getRevenue(){
+    return {
+      anchor: +document.getElementById('r-anchor').value,
+      oneoff: +document.getElementById('r-oneoff').value,
+      tap: +document.getElementById('r-tap').value,
+      content: +document.getElementById('r-content').value
+    };
+  }
+
+  function updateRevenue(){
+    const r = getRevenue();
+    document.getElementById('r-anchor-out').textContent = '$'+r.anchor.toLocaleString();
+    document.getElementById('r-oneoff-out').textContent = '$'+r.oneoff.toLocaleString();
+    document.getElementById('r-tap-out').textContent = '$'+r.tap.toLocaleString();
+    document.getElementById('r-content-out').textContent = '$'+r.content.toLocaleString();
+    const total = r.anchor + r.oneoff + r.tap + r.content;
+    document.getElementById('r-total').textContent = '$'+total.toLocaleString();
+    const gap = 28000 - total;
+    document.getElementById('r-gap').textContent = (gap >= 0 ? '$' : '-$')+Math.abs(gap).toLocaleString();
+    const pct = Math.min(999, Math.round((total/28000)*100));
+    document.getElementById('r-pct').textContent = pct+'%';
+  }
+
+  function setStatus(msg){
+    const s = document.getElementById('status');
+    s.textContent = msg;
+    setTimeout(() => { s.textContent = ''; }, 2500);
+  }
+
+  function saveState(){
+    const state = {
+      hours: getHours(),
+      grid: gridState,
+      revenue: getRevenue(),
+      savedAt: new Date().toISOString()
+    };
+    try {
+      localStorage.setItem('rerev_tapestry_v1', JSON.stringify(state));
+      setStatus('Saved.');
+    } catch(e){ setStatus('Save failed.'); }
+  }
+
+  function loadState(){
+    try {
+      const raw = localStorage.getItem('rerev_tapestry_v1');
+      if (!raw) { setStatus('No saved state.'); return; }
+      const state = JSON.parse(raw);
+      Object.keys(state.hours).forEach(k => { document.getElementById('h-'+k).value = state.hours[k]; });
+      Object.keys(state.revenue).forEach(k => { document.getElementById('r-'+k).value = state.revenue[k]; });
+      gridState = state.grid;
+      updateHours(); updateRevenue(); renderGrid();
+      setStatus('Loaded from '+new Date(state.savedAt).toLocaleString());
+    } catch(e){ setStatus('Load failed.'); }
+  }
+
+  function resetState(){
+    Object.keys(DEFAULT_HOURS).forEach(k => { document.getElementById('h-'+k).value = DEFAULT_HOURS[k]; });
+    Object.keys(DEFAULT_REVENUE).forEach(k => { document.getElementById('r-'+k).value = DEFAULT_REVENUE[k]; });
+    gridState = DEFAULT_GRID.map(r => r.slice());
+    updateHours(); updateRevenue(); renderGrid();
+    setStatus('Reset.');
+  }
+
+  function exportState(){
+    const state = {
+      hours: getHours(),
+      grid: gridState,
+      revenue: getRevenue(),
+      exportedAt: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'tapestry-'+new Date().toISOString().slice(0,10)+'.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    setStatus('Exported.');
+  }
+
+  ['h-btc','h-prismm','h-sc','h-pipe','h-content','h-new'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateHours);
+  });
+  ['r-anchor','r-oneoff','r-tap','r-content'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateRevenue);
+  });
+  document.getElementById('btn-save').onclick = saveState;
+  document.getElementById('btn-load').onclick = loadState;
+  document.getElementById('btn-reset').onclick = resetState;
+  document.getElementById('btn-export').onclick = exportState;
+
+  renderGrid(); updateHours(); updateRevenue();
+})();
+</script>
+
+</body>
+</html>
