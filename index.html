@@ -17,6 +17,7 @@
     --accent: #0F6E56;
     --accent-light: #E1F5EE;
     --danger: #A32D2D;
+    --warning: #BA7517;
     --radius-md: 8px;
     --radius-lg: 12px;
   }
@@ -38,19 +39,14 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg-tertiary);
     color: var(--text-primary);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    margin: 0; padding: 0; line-height: 1.6;
   }
   .header {
     background: var(--bg-primary);
     border-bottom: 0.5px solid var(--border-tertiary);
     padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
   }
   .brand { display: flex; align-items: center; gap: 12px; }
   .brand-mark {
@@ -68,9 +64,7 @@
     color: var(--text-primary);
     padding: 8px 14px;
     border-radius: var(--radius-md);
-    font-size: 13px;
-    cursor: pointer;
-    font-family: inherit;
+    font-size: 13px; cursor: pointer; font-family: inherit;
     transition: background 0.15s;
   }
   button:hover { background: var(--bg-secondary); }
@@ -83,8 +77,7 @@
   button.primary:hover { opacity: 0.9; background: var(--accent); }
   .container { max-width: 1040px; margin: 0 auto; padding: 2rem; }
   .tabs {
-    display: flex;
-    gap: 4px;
+    display: flex; gap: 4px;
     background: var(--bg-secondary);
     padding: 4px;
     border-radius: var(--radius-md);
@@ -94,9 +87,7 @@
   .tab {
     padding: 8px 16px;
     border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    border: none;
+    font-size: 13px; cursor: pointer; border: none;
     background: transparent;
     color: var(--text-secondary);
     font-family: inherit;
@@ -188,40 +179,29 @@
   .exec-grid {
     display: grid;
     grid-template-columns: 170px repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 8px;
+    gap: 8px; margin-top: 8px;
   }
   .exec-hdr {
-    font-size: 11px;
-    color: var(--text-secondary);
-    padding: 8px;
-    text-align: center;
-    font-weight: 500;
+    font-size: 11px; color: var(--text-secondary);
+    padding: 8px; text-align: center; font-weight: 500;
   }
   .exec-rowlbl {
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
     padding: 12px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    font-weight: 500;
+    display: flex; align-items: center;
+    font-size: 13px; font-weight: 500;
   }
   .exec-cell {
     background: var(--bg-primary);
     border: 0.5px solid var(--border-tertiary);
     border-radius: var(--radius-md);
     padding: 12px 10px;
-    text-align: center;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-height: 72px;
+    text-align: center; font-size: 12px;
+    cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px; min-height: 72px;
   }
   .exec-cell:hover {
     border-color: var(--accent);
@@ -232,15 +212,11 @@
     border-color: var(--accent);
   }
   .exec-icon {
-    width: 20px;
-    height: 20px;
+    width: 20px; height: 20px;
     border-radius: 50%;
     background: var(--bg-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--text-secondary);
   }
   .exec-cell-ready .exec-icon {
     background: var(--accent);
@@ -257,78 +233,207 @@
     border: 0.5px solid var(--border-tertiary);
   }
   .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 12px;
   }
   .panel-title { font-size: 15px; font-weight: 500; margin: 0; }
   .panel-close {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+    background: transparent; border: none;
+    font-size: 20px; cursor: pointer;
     color: var(--text-secondary);
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    line-height: 1;
+    padding: 0; width: 24px; height: 24px; line-height: 1;
   }
   .panel-close:hover { color: var(--text-primary); background: transparent; }
-  textarea, input[type="text"], input[type="url"] {
+  textarea, input[type="text"], input[type="url"], input[type="number"] {
     width: 100%;
     background: var(--bg-primary);
     border: 0.5px solid var(--border-tertiary);
     border-radius: var(--radius-md);
     padding: 10px 12px;
-    font-family: inherit;
-    font-size: 13px;
+    font-family: inherit; font-size: 13px;
     color: var(--text-primary);
-    resize: vertical;
-    line-height: 1.6;
+    resize: vertical; line-height: 1.6;
   }
   textarea:focus, input:focus {
-    outline: none;
-    border-color: var(--accent);
+    outline: none; border-color: var(--accent);
   }
   .panel-field { margin-bottom: 12px; }
   .panel-field-label {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-bottom: 4px;
-    display: block;
+    font-size: 12px; color: var(--text-secondary);
+    margin-bottom: 4px; display: block;
   }
   .contact-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1.5fr auto;
-    gap: 8px;
-    margin-bottom: 6px;
+    gap: 8px; margin-bottom: 6px;
   }
   .contact-row input { font-size: 12px; padding: 6px 8px; }
   .contact-remove {
     background: transparent;
     border: 0.5px solid var(--border-tertiary);
     color: var(--text-secondary);
-    padding: 4px 10px;
-    font-size: 11px;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 4px 10px; font-size: 11px;
+    border-radius: 4px; cursor: pointer;
   }
   .contact-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1.5fr auto;
-    gap: 8px;
-    margin-bottom: 6px;
-    font-size: 11px;
-    color: var(--text-secondary);
+    gap: 8px; margin-bottom: 6px;
+    font-size: 11px; color: var(--text-secondary);
     padding: 0 8px;
   }
   .panel-actions { display: flex; gap: 8px; margin-top: 12px; }
   .copy-note { font-size: 11px; color: var(--text-tertiary); margin-top: 6px; }
+
+  .output-check {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+  }
+  .output-check-title {
+    font-size: 14px; font-weight: 500;
+    margin: 0 0 8px;
+  }
+  .output-ready-banner {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--accent-light);
+    border: 0.5px solid var(--accent);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    color: var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .output-ready-banner strong { font-weight: 500; }
+  .output-row {
+    display: grid;
+    grid-template-columns: 170px repeat(4, 1fr);
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 0.5px solid var(--border-tertiary);
+    font-size: 12px;
+  }
+  .output-row:last-child { border-bottom: none; }
+  .output-row-label {
+    display: flex; align-items: center;
+    color: var(--text-secondary);
+  }
+  .output-check-mark {
+    text-align: center;
+    font-size: 14px;
+    padding: 4px;
+  }
+  .check-done { color: var(--accent); font-weight: 500; }
+  .check-pending { color: var(--text-tertiary); }
+
+  .round-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .round-pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 0.5px solid var(--border-tertiary);
+    background: var(--bg-primary);
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text-secondary);
+  }
+  .round-pill.active {
+    background: var(--accent);
+    color: #E1F5EE;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .round-pill:hover { border-color: var(--border-secondary); }
+  .round-pill.active:hover { background: var(--accent); }
+
+  .measure-grid {
+    display: grid;
+    grid-template-columns: 170px repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .measure-hdr {
+    font-size: 11px; color: var(--text-secondary);
+    padding: 8px 4px; text-align: center; font-weight: 500;
+  }
+  .measure-rowlbl {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-size: 13px; font-weight: 500;
+  }
+  .measure-cell {
+    padding: 4px;
+  }
+  .measure-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+  .measure-pair input {
+    font-size: 12px;
+    padding: 4px 8px;
+    text-align: center;
+    width: 100%;
+  }
+  .measure-subhdr {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+  .measure-pct {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 8px;
+    text-align: center;
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+  }
+  .measure-pct.good { background: #9FE1CB; color: #04342C; }
+  .measure-pct.mid { background: #FAEEDA; color: #412402; }
+  .measure-pct.low { background: #F7C1C1; color: #501313; }
+
+  .refactor {
+    margin-top: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+  }
+  .refactor-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border-tertiary);
+    font-size: 13px;
+  }
+  .refactor-item:last-child { border-bottom: none; }
+  .refactor-item input[type="checkbox"] {
+    width: auto;
+    margin: 3px 0 0;
+  }
+  .refactor-item-text { flex: 1; }
+  .refactor-item-title { font-weight: 500; font-size: 13px; }
+  .refactor-item-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
   @media (max-width: 820px) {
     .container { padding: 1rem; }
     .fit-grid { grid-template-columns: 130px repeat(4, 1fr); }
     .exec-grid { grid-template-columns: 110px repeat(4, 1fr); }
+    .output-row { grid-template-columns: 110px repeat(4, 1fr); }
+    .measure-grid { grid-template-columns: 110px repeat(5, 1fr); }
     .lbl { min-width: 120px; font-size: 12px; }
     .rowlbl { font-size: 11px; }
     .cell { font-size: 11px; padding: 8px 4px; }
@@ -361,6 +466,7 @@
   <div class="tabs">
     <button class="tab active" data-view="alignment">Offer alignment</button>
     <button class="tab" data-view="execution">Execution</button>
+    <button class="tab" data-view="measure">Measure</button>
   </div>
 
   <div id="view-alignment">
@@ -440,6 +546,48 @@
       <div id="exec-body" class="exec-grid"></div>
 
       <div id="exec-panel"></div>
+
+      <div class="output-check">
+        <p class="output-check-title">Output defined</p>
+        <p style="font-size: 12px; color: var(--text-secondary); margin: 0 0 12px;">An ICP row is complete when all four cells are populated. When every ICP row is complete, execution is done and you move to Measure.</p>
+        <div id="output-rows"></div>
+        <div id="output-ready" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-measure" style="display: none;">
+
+    <div class="section">
+      <p class="sec-h">Measure</p>
+      <p class="sec-sub">Track actuals against targets per blitz round. Compare rounds to see whether refactors worked.</p>
+
+      <div class="round-bar">
+        <span style="font-size: 12px; color: var(--text-secondary); margin-right: 4px;">Round:</span>
+        <div id="round-pills"></div>
+        <button id="btn-add-round" style="padding: 6px 12px; font-size: 12px;">+ Add round</button>
+        <button id="btn-rename-round" style="padding: 6px 12px; font-size: 12px;">Rename</button>
+      </div>
+
+      <div class="measure-grid">
+        <div></div>
+        <div class="measure-hdr">Replies</div>
+        <div class="measure-hdr">Calls booked</div>
+        <div class="measure-hdr">Proposals sent</div>
+        <div class="measure-hdr">Closed</div>
+        <div class="measure-hdr">Revenue</div>
+      </div>
+      <div id="measure-body" class="measure-grid"></div>
+
+      <div style="margin-top: 1rem; padding: 12px 16px; background: var(--bg-secondary); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary);">
+        Top number is actual. Bottom number is target. Percentage on the right is actual vs target for each metric, aggregated across ICPs.
+      </div>
+
+      <div class="refactor">
+        <p class="output-check-title">Refactor signals</p>
+        <p style="font-size: 12px; color: var(--text-secondary); margin: 0 0 12px;">Check any that apply after the round is fully complete. Any three or more signals means the round needs refactoring before running again.</p>
+        <div id="refactor-list"></div>
+      </div>
     </div>
   </div>
 
@@ -454,15 +602,7 @@
     {label:'Strong', bg:'#9FE1CB', color:'#04342C', border:'0.5px solid var(--border-tertiary)'},
     {label:'Strongest', bg:'#0F6E56', color:'#E1F5EE', border:'0.5px solid var(--border-tertiary)'}
   ];
-  const SERVICE_LINES = [
-    'Claude-native automation',
-    'Gmail outreach infra',
-    'Google Apps Script systems',
-    'Content automation',
-    'Workshop delivery',
-    'Custom CRM builds',
-    'AI consulting / advisory'
-  ];
+  const SERVICE_LINES = ['Claude-native automation','Gmail outreach infra','Google Apps Script systems','Content automation','Workshop delivery','Custom CRM builds','AI consulting / advisory'];
   const AUDIENCES = ['agencies','fractionals','advisory','interim'];
   const AUDIENCE_LABELS = {
     agencies: 'Marketing agencies',
@@ -471,13 +611,7 @@
     interim: 'Interim leaders'
   };
   const DEFAULT_GRID = [
-    [3,4,2,4],
-    [4,3,0,3],
-    [3,4,2,4],
-    [4,3,2,2],
-    [2,2,0,2],
-    [2,3,0,3],
-    [3,3,2,3]
+    [3,4,2,4],[4,3,0,3],[3,4,2,4],[4,3,2,2],[2,2,0,2],[2,3,0,3],[3,3,2,3]
   ];
   const DEFAULT_HOURS = { btc:10, prismm:15, sc:2, pipe:8, content:3, new:2 };
   const DEFAULT_REVENUE = { anchor:2500, oneoff:15000, tap:0, content:0 };
@@ -492,26 +626,50 @@
     { key: 'brief', label: 'Cowork brief' }
   ];
 
+  const METRICS = ['replies','calls','proposals','closed','revenue'];
+
+  const REFACTOR_SIGNALS = [
+    { title: 'Zero or near-zero replies after full send', desc: 'Targeting, message, or both need rework. Not a list problem.' },
+    { title: 'All replies came from one signal type', desc: 'Narrow the ICP around that signal; everything else is noise.' },
+    { title: 'Contacts sourced faster than sent', desc: 'Sourcing is over-resourced relative to send cadence. Reduce or redirect.' },
+    { title: 'Replies came but no calls booked', desc: 'Email did its job, CTA or follow-up failed. Rework the ask.' },
+    { title: 'Calls booked but no proposals sent', desc: 'Call is not converting. Likely the offer is off or discovery is thin.' },
+    { title: 'Proposals sent but no closes', desc: 'Price, scope, or timing is wrong. Not a pipeline problem, a closing one.' },
+    { title: 'Round took more than 1.5x planned time', desc: 'Scope, template, or sourcing is under-automated. Fix the choke.' },
+    { title: 'One ICP dominated responses', desc: 'Consider dropping weaker ICPs and going deeper on the winner.' }
+  ];
+
   const DEFAULT_EXEC = {};
   AUDIENCES.forEach(aud => {
     DEFAULT_EXEC[aud] = {
-      landing: '',
-      email: { subject: '', body: '' },
-      contacts: [],
-      brief: ''
+      landing: '', email: { subject: '', body: '' },
+      contacts: [], brief: ''
     };
   });
 
+  function defaultRound(name){
+    const round = { name: name, targets: {}, actuals: {}, refactor: {} };
+    AUDIENCES.forEach(aud => {
+      round.targets[aud] = { replies: 3, calls: 2, proposals: 1, closed: 1, revenue: 5000 };
+      round.actuals[aud] = { replies: 0, calls: 0, proposals: 0, closed: 0, revenue: 0 };
+    });
+    REFACTOR_SIGNALS.forEach((_, i) => { round.refactor[i] = false; });
+    return round;
+  }
+
+  const DEFAULT_ROUNDS = [defaultRound('Round 1')];
+
   let gridState = DEFAULT_GRID.map(r => r.slice());
   let execState = JSON.parse(JSON.stringify(DEFAULT_EXEC));
+  let rounds = JSON.parse(JSON.stringify(DEFAULT_ROUNDS));
+  let activeRound = 0;
 
   function renderGrid(){
     const body = document.getElementById('grid-body');
     body.innerHTML = '';
     SERVICE_LINES.forEach((line, r) => {
       const lbl = document.createElement('div');
-      lbl.className = 'rowlbl';
-      lbl.textContent = line;
+      lbl.className = 'rowlbl'; lbl.textContent = line;
       body.appendChild(lbl);
       AUDIENCES.forEach((_, c) => {
         const score = gridState[r][c];
@@ -574,6 +732,39 @@
         body.appendChild(cell);
       });
     });
+    renderOutputCheck();
+  }
+
+  function renderOutputCheck(){
+    const body = document.getElementById('output-rows');
+    body.innerHTML = '';
+    let allReady = true;
+    AUDIENCES.forEach(aud => {
+      const row = document.createElement('div');
+      row.className = 'output-row';
+      const lbl = document.createElement('div');
+      lbl.className = 'output-row-label';
+      lbl.textContent = AUDIENCE_LABELS[aud];
+      row.appendChild(lbl);
+      EXEC_COLS.forEach(col => {
+        const ready = cellIsReady(aud, col.key);
+        if (!ready) allReady = false;
+        const mark = document.createElement('div');
+        mark.className = 'output-check-mark ' + (ready ? 'check-done' : 'check-pending');
+        mark.textContent = ready ? '\u2713' : '\u00B7';
+        row.appendChild(mark);
+      });
+      body.appendChild(row);
+    });
+    const banner = document.getElementById('output-ready');
+    if (allReady) {
+      banner.style.display = 'flex';
+      banner.className = 'output-ready-banner';
+      banner.innerHTML = '<span><strong>Execution complete.</strong> All four ICP rows are populated. Ready to run the blitz and measure.</span>' +
+        '<button onclick="window._tapGoMeasure()" style="background: var(--accent); color: #E1F5EE; border-color: var(--accent);">Open Measure tab \u2192</button>';
+    } else {
+      banner.style.display = 'none';
+    }
   }
 
   function closePanel(){
@@ -587,28 +778,18 @@
 
     let content = '';
     if (key === 'landing') {
-      content = '<div class="panel-field">' +
-        '<label class="panel-field-label">Sub-landing page URL</label>' +
-        '<input type="url" id="inp-landing" value="' + escapeHtml(execState[aud].landing) + '" placeholder="https://rerev.io/fractionals">' +
-        '</div>' +
-        '<div class="panel-actions">' +
-          '<button class="primary" onclick="window._tapSaveLanding(\'' + aud + '\')">Save</button>' +
-          '<button onclick="window._tapClosePanel()">Cancel</button>' +
-        '</div>';
+      content = '<div class="panel-field"><label class="panel-field-label">Sub-landing page URL</label>' +
+        '<input type="url" id="inp-landing" value="' + escapeHtml(execState[aud].landing) + '" placeholder="https://rerev.io/fractionals"></div>' +
+        '<div class="panel-actions"><button class="primary" onclick="window._tapSaveLanding(\'' + aud + '\')">Save</button>' +
+        '<button onclick="window._tapClosePanel()">Cancel</button></div>';
     } else if (key === 'email') {
-      content = '<div class="panel-field">' +
-        '<label class="panel-field-label">Subject line</label>' +
-        '<input type="text" id="inp-subject" value="' + escapeHtml(execState[aud].email.subject) + '" placeholder="Quick question about your ops">' +
-        '</div>' +
-        '<div class="panel-field">' +
-        '<label class="panel-field-label">Email body (five-move template)</label>' +
-        '<textarea id="inp-body" rows="14" placeholder="1. The commend&#10;2. The identity line&#10;3. The thesis neighbor framing&#10;4. The ask&#10;5. The sign-off">' + escapeHtml(execState[aud].email.body) + '</textarea>' +
-        '</div>' +
-        '<div class="panel-actions">' +
-          '<button class="primary" onclick="window._tapSaveEmail(\'' + aud + '\')">Save</button>' +
-          '<button onclick="window._tapCopyEmail(\'' + aud + '\')">Copy</button>' +
-          '<button onclick="window._tapClosePanel()">Cancel</button>' +
-        '</div>' +
+      content = '<div class="panel-field"><label class="panel-field-label">Subject line</label>' +
+        '<input type="text" id="inp-subject" value="' + escapeHtml(execState[aud].email.subject) + '" placeholder="Quick question about your ops"></div>' +
+        '<div class="panel-field"><label class="panel-field-label">Email body (five-move template)</label>' +
+        '<textarea id="inp-body" rows="14" placeholder="1. The commend&#10;2. The identity line&#10;3. The thesis neighbor framing&#10;4. The ask&#10;5. The sign-off">' + escapeHtml(execState[aud].email.body) + '</textarea></div>' +
+        '<div class="panel-actions"><button class="primary" onclick="window._tapSaveEmail(\'' + aud + '\')">Save</button>' +
+        '<button onclick="window._tapCopyEmail(\'' + aud + '\')">Copy</button>' +
+        '<button onclick="window._tapClosePanel()">Cancel</button></div>' +
         '<p class="copy-note">Five moves: commend, identity line, thesis neighbor framing, ask, sign-off.</p>';
     } else if (key === 'contacts') {
       const rows = execState[aud].contacts.map((c, i) => {
@@ -617,36 +798,24 @@
           '<input type="text" placeholder="Title" value="' + escapeHtml(c.title || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'title\', this.value)">' +
           '<input type="text" placeholder="Org" value="' + escapeHtml(c.org || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'org\', this.value)">' +
           '<input type="text" placeholder="Signal / hook" value="' + escapeHtml(c.signal || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'signal\', this.value)">' +
-          '<button class="contact-remove" onclick="window._tapRemoveContact(\'' + aud + '\', ' + i + ')">Remove</button>' +
-          '</div>';
+          '<button class="contact-remove" onclick="window._tapRemoveContact(\'' + aud + '\', ' + i + ')">Remove</button></div>';
       }).join('');
-      content = '<div class="contact-header">' +
-          '<span>Name</span><span>Title</span><span>Org</span><span>Signal / hook</span><span></span>' +
-        '</div>' +
+      content = '<div class="contact-header"><span>Name</span><span>Title</span><span>Org</span><span>Signal / hook</span><span></span></div>' +
         '<div id="contact-list">' + rows + '</div>' +
-        '<div class="panel-actions">' +
-          '<button class="primary" onclick="window._tapAddContact(\'' + aud + '\')">Add contact</button>' +
-          '<button onclick="window._tapClosePanel()">Done</button>' +
-        '</div>';
+        '<div class="panel-actions"><button class="primary" onclick="window._tapAddContact(\'' + aud + '\')">Add contact</button>' +
+        '<button onclick="window._tapClosePanel()">Done</button></div>';
     } else if (key === 'brief') {
-      content = '<div class="panel-field">' +
-        '<label class="panel-field-label">Cowork brief (copy this into a Cowork session for this ICP)</label>' +
-        '<textarea id="inp-brief" rows="16" placeholder="ICP definition, moment signals, service line, sourcing instructions, email template reference, approval pause point, push-to-drafts instructions...">' + escapeHtml(execState[aud].brief) + '</textarea>' +
-        '</div>' +
-        '<div class="panel-actions">' +
-          '<button class="primary" onclick="window._tapSaveBrief(\'' + aud + '\')">Save</button>' +
-          '<button onclick="window._tapCopyBrief(\'' + aud + '\')">Copy</button>' +
-          '<button onclick="window._tapClosePanel()">Cancel</button>' +
-        '</div>';
+      content = '<div class="panel-field"><label class="panel-field-label">Cowork brief (copy this into a Cowork session for this ICP)</label>' +
+        '<textarea id="inp-brief" rows="16" placeholder="ICP definition, moment signals, service line, sourcing instructions, email template reference, approval pause point, push-to-drafts instructions...">' + escapeHtml(execState[aud].brief) + '</textarea></div>' +
+        '<div class="panel-actions"><button class="primary" onclick="window._tapSaveBrief(\'' + aud + '\')">Save</button>' +
+        '<button onclick="window._tapCopyBrief(\'' + aud + '\')">Copy</button>' +
+        '<button onclick="window._tapClosePanel()">Cancel</button></div>';
     }
 
-    panel.innerHTML = '<div class="panel">' +
-      '<div class="panel-header">' +
-        '<p class="panel-title">' + audLbl + ' \u00B7 ' + col.label + '</p>' +
-        '<button class="panel-close" onclick="window._tapClosePanel()">\u00D7</button>' +
-      '</div>' +
-      content +
-      '</div>';
+    panel.innerHTML = '<div class="panel"><div class="panel-header">' +
+      '<p class="panel-title">' + audLbl + ' \u00B7 ' + col.label + '</p>' +
+      '<button class="panel-close" onclick="window._tapClosePanel()">\u00D7</button></div>' +
+      content + '</div>';
   }
 
   function escapeHtml(s){
@@ -691,6 +860,139 @@
     renderExec();
   };
   window._tapClosePanel = closePanel;
+  window._tapGoMeasure = function(){
+    document.querySelector('.tab[data-view="measure"]').click();
+  };
+
+  function renderRoundPills(){
+    const bar = document.getElementById('round-pills');
+    bar.innerHTML = '';
+    rounds.forEach((r, i) => {
+      const pill = document.createElement('button');
+      pill.className = 'round-pill' + (i === activeRound ? ' active' : '');
+      pill.textContent = r.name;
+      pill.onclick = () => { activeRound = i; renderRoundPills(); renderMeasure(); renderRefactor(); };
+      bar.appendChild(pill);
+    });
+  }
+
+  function renderMeasure(){
+    const body = document.getElementById('measure-body');
+    body.innerHTML = '';
+    const round = rounds[activeRound];
+    AUDIENCES.forEach(aud => {
+      const rowlbl = document.createElement('div');
+      rowlbl.className = 'measure-rowlbl';
+      rowlbl.textContent = AUDIENCE_LABELS[aud];
+      body.appendChild(rowlbl);
+      METRICS.forEach(metric => {
+        const cell = document.createElement('div');
+        cell.className = 'measure-cell';
+        const pair = document.createElement('div');
+        pair.className = 'measure-pair';
+        const actIn = document.createElement('input');
+        actIn.type = 'number'; actIn.min = '0';
+        actIn.value = round.actuals[aud][metric];
+        actIn.onchange = (e) => { round.actuals[aud][metric] = +e.target.value || 0; };
+        pair.appendChild(actIn);
+        const tgtIn = document.createElement('input');
+        tgtIn.type = 'number'; tgtIn.min = '0';
+        tgtIn.value = round.targets[aud][metric];
+        tgtIn.style.opacity = '0.7';
+        tgtIn.onchange = (e) => { round.targets[aud][metric] = +e.target.value || 0; };
+        pair.appendChild(tgtIn);
+        const sub = document.createElement('div');
+        sub.className = 'measure-subhdr';
+        sub.textContent = 'actual / target';
+        pair.appendChild(sub);
+        cell.appendChild(pair);
+        body.appendChild(cell);
+      });
+    });
+
+    const totalRow = document.createElement('div');
+    totalRow.className = 'measure-rowlbl';
+    totalRow.textContent = 'Round total';
+    totalRow.style.background = 'var(--bg-tertiary)';
+    body.appendChild(totalRow);
+    METRICS.forEach(metric => {
+      let actTotal = 0, tgtTotal = 0;
+      AUDIENCES.forEach(aud => {
+        actTotal += round.actuals[aud][metric] || 0;
+        tgtTotal += round.targets[aud][metric] || 0;
+      });
+      const pct = tgtTotal > 0 ? Math.round((actTotal / tgtTotal) * 100) : 0;
+      const cell = document.createElement('div');
+      cell.className = 'measure-cell';
+      const p = document.createElement('div');
+      p.className = 'measure-pct ' + (pct >= 80 ? 'good' : pct >= 40 ? 'mid' : 'low');
+      if (metric === 'revenue') {
+        p.innerHTML = '$' + actTotal.toLocaleString() + '<br><span style="font-size: 10px; font-weight: 400;">' + pct + '% of $' + tgtTotal.toLocaleString() + '</span>';
+      } else {
+        p.innerHTML = actTotal + ' / ' + tgtTotal + '<br><span style="font-size: 10px; font-weight: 400;">' + pct + '%</span>';
+      }
+      cell.appendChild(p);
+      body.appendChild(cell);
+    });
+  }
+
+  function renderRefactor(){
+    const list = document.getElementById('refactor-list');
+    list.innerHTML = '';
+    const round = rounds[activeRound];
+    let checkedCount = 0;
+    REFACTOR_SIGNALS.forEach((sig, i) => {
+      if (round.refactor[i]) checkedCount++;
+      const item = document.createElement('label');
+      item.className = 'refactor-item';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!round.refactor[i];
+      cb.onchange = (e) => {
+        round.refactor[i] = e.target.checked;
+        renderRefactor();
+      };
+      item.appendChild(cb);
+      const text = document.createElement('div');
+      text.className = 'refactor-item-text';
+      text.innerHTML = '<div class="refactor-item-title">' + sig.title + '</div><div class="refactor-item-desc">' + sig.desc + '</div>';
+      item.appendChild(text);
+      list.appendChild(item);
+    });
+    if (checkedCount >= 3) {
+      const warn = document.createElement('div');
+      warn.style.marginTop = '12px';
+      warn.style.padding = '10px 14px';
+      warn.style.background = '#FAEEDA';
+      warn.style.color = '#412402';
+      warn.style.borderRadius = 'var(--radius-md)';
+      warn.style.fontSize = '12px';
+      warn.style.fontWeight = '500';
+      warn.textContent = checkedCount + ' refactor signals flagged. Consider reworking the round before running again.';
+      list.appendChild(warn);
+    }
+  }
+
+  document.getElementById('btn-add-round').onclick = () => {
+    const newName = 'Round ' + (rounds.length + 1);
+    const newRound = defaultRound(newName);
+    if (rounds.length > 0) {
+      const prev = rounds[rounds.length - 1];
+      AUDIENCES.forEach(aud => {
+        newRound.targets[aud] = Object.assign({}, prev.targets[aud]);
+      });
+    }
+    rounds.push(newRound);
+    activeRound = rounds.length - 1;
+    renderRoundPills(); renderMeasure(); renderRefactor();
+  };
+  document.getElementById('btn-rename-round').onclick = () => {
+    const newName = prompt('Rename round:', rounds[activeRound].name);
+    if (newName && newName.trim()) {
+      rounds[activeRound].name = newName.trim();
+      renderRoundPills();
+    }
+  };
 
   function getHours(){
     return {
@@ -765,17 +1067,20 @@
       grid: gridState,
       revenue: getRevenue(),
       exec: execState,
+      rounds: rounds,
+      activeRound: activeRound,
       savedAt: new Date().toISOString()
     };
     try {
-      localStorage.setItem('rerev_tapestry_v2', JSON.stringify(state));
+      localStorage.setItem('rerev_tapestry_v3', JSON.stringify(state));
       setStatus('Saved.');
     } catch(e){ setStatus('Save failed.'); }
   }
 
   function loadState(){
     try {
-      let raw = localStorage.getItem('rerev_tapestry_v2');
+      let raw = localStorage.getItem('rerev_tapestry_v3');
+      if (!raw) raw = localStorage.getItem('rerev_tapestry_v2');
       if (!raw) raw = localStorage.getItem('rerev_tapestry_v1');
       if (!raw) { setStatus('No saved state.'); return; }
       const state = JSON.parse(raw);
@@ -783,7 +1088,10 @@
       Object.keys(state.revenue).forEach(k => { document.getElementById('r-'+k).value = state.revenue[k]; });
       gridState = state.grid;
       if (state.exec) execState = state.exec;
+      if (state.rounds) rounds = state.rounds;
+      if (typeof state.activeRound === 'number') activeRound = state.activeRound;
       updateHours(); updateRevenue(); renderGrid(); renderExec();
+      renderRoundPills(); renderMeasure(); renderRefactor();
       setStatus('Loaded from '+new Date(state.savedAt).toLocaleString());
     } catch(e){ setStatus('Load failed.'); }
   }
@@ -793,7 +1101,10 @@
     Object.keys(DEFAULT_REVENUE).forEach(k => { document.getElementById('r-'+k).value = DEFAULT_REVENUE[k]; });
     gridState = DEFAULT_GRID.map(r => r.slice());
     execState = JSON.parse(JSON.stringify(DEFAULT_EXEC));
+    rounds = JSON.parse(JSON.stringify(DEFAULT_ROUNDS));
+    activeRound = 0;
     updateHours(); updateRevenue(); renderGrid(); renderExec();
+    renderRoundPills(); renderMeasure(); renderRefactor();
     closePanel();
     setStatus('Reset.');
   }
@@ -804,6 +1115,8 @@
       grid: gridState,
       revenue: getRevenue(),
       exec: execState,
+      rounds: rounds,
+      activeRound: activeRound,
       exportedAt: new Date().toISOString()
     };
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
@@ -823,6 +1136,7 @@
       const view = tab.dataset.view;
       document.getElementById('view-alignment').style.display = view === 'alignment' ? 'block' : 'none';
       document.getElementById('view-execution').style.display = view === 'execution' ? 'block' : 'none';
+      document.getElementById('view-measure').style.display = view === 'measure' ? 'block' : 'none';
       if (view === 'execution') closePanel();
     };
   });
@@ -840,6 +1154,9 @@
 
   renderGrid();
   renderExec();
+  renderRoundPills();
+  renderMeasure();
+  renderRefactor();
   updateHours();
   updateRevenue();
 })();
