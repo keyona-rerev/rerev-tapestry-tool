@@ -15,6 +15,7 @@
     --border-tertiary: rgba(44, 44, 42, 0.15);
     --border-secondary: rgba(44, 44, 42, 0.3);
     --accent: #0F6E56;
+    --accent-light: #E1F5EE;
     --danger: #A32D2D;
     --radius-md: 8px;
     --radius-lg: 12px;
@@ -29,6 +30,7 @@
       --text-tertiary: #888780;
       --border-tertiary: rgba(241, 239, 232, 0.15);
       --border-secondary: rgba(241, 239, 232, 0.3);
+      --accent-light: #085041;
     }
   }
   * { box-sizing: border-box; }
@@ -50,37 +52,16 @@
     flex-wrap: wrap;
     gap: 12px;
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .brand { display: flex; align-items: center; gap: 12px; }
   .brand-mark {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 32px; height: 32px; border-radius: 8px;
     background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #E1F5EE;
-    font-weight: 500;
-    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #E1F5EE; font-weight: 500; font-size: 14px;
   }
-  .brand-name {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .brand-sub {
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  .actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  .brand-name { font-size: 16px; font-weight: 500; }
+  .brand-sub { font-size: 13px; color: var(--text-secondary); }
+  .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   button {
     background: transparent;
     border: 0.5px solid var(--border-secondary);
@@ -94,10 +75,36 @@
   }
   button:hover { background: var(--bg-secondary); }
   button:active { transform: scale(0.98); }
-  .container {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 2rem;
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #E1F5EE;
+  }
+  button.primary:hover { opacity: 0.9; background: var(--accent); }
+  .container { max-width: 1040px; margin: 0 auto; padding: 2rem; }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .tab {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+  }
+  .tab.active {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-weight: 500;
   }
   .section {
     background: var(--bg-primary);
@@ -106,139 +113,227 @@
     padding: 1.5rem 1.75rem;
     margin-bottom: 1.5rem;
   }
-  .sec-h {
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 0 4px;
-  }
-  .sec-sub {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin: 0 0 1.25rem;
-  }
+  .sec-h { font-size: 18px; font-weight: 500; margin: 0 0 4px; }
+  .sec-sub { font-size: 13px; color: var(--text-secondary); margin: 0 0 1.25rem; }
   .row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .lbl { font-size: 13px; min-width: 160px; }
   .val { font-size: 13px; font-weight: 500; min-width: 56px; text-align: right; }
   input[type="range"] {
-    flex: 1;
-    height: 4px;
-    appearance: none;
-    background: var(--bg-tertiary);
-    border-radius: 2px;
-    outline: none;
+    flex: 1; height: 4px; appearance: none;
+    background: var(--bg-tertiary); border-radius: 2px; outline: none;
   }
   input[type="range"]::-webkit-slider-thumb {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    border: none;
+    appearance: none; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: none;
   }
   input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    border: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: none;
   }
   .bar {
-    display: flex;
-    height: 44px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    display: flex; height: 44px;
+    border-radius: var(--radius-md); overflow: hidden;
     border: 0.5px solid var(--border-tertiary);
   }
   .seg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 500;
-    transition: flex 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; transition: flex 0.2s;
   }
   .bar-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    display: flex; justify-content: space-between;
+    margin-top: 10px; font-size: 12px; color: var(--text-secondary);
   }
-  .grid {
+  .fit-grid {
     display: grid;
     grid-template-columns: 200px repeat(4, 1fr);
-    gap: 6px;
-    margin-top: 4px;
+    gap: 6px; margin-top: 4px;
   }
   .hdr {
-    font-size: 11px;
-    color: var(--text-secondary);
-    padding: 4px 6px;
-    text-align: center;
+    font-size: 11px; color: var(--text-secondary);
+    padding: 4px 6px; text-align: center;
   }
   .rowlbl {
-    font-size: 12px;
-    padding: 6px;
-    display: flex;
-    align-items: center;
+    font-size: 12px; padding: 6px;
+    display: flex; align-items: center;
   }
   .cell {
-    padding: 10px 8px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 500;
+    padding: 10px 8px; text-align: center;
+    font-size: 12px; font-weight: 500;
     border-radius: var(--radius-md);
-    cursor: pointer;
-    user-select: none;
+    cursor: pointer; user-select: none;
     transition: opacity 0.15s;
   }
   .cell:hover { opacity: 0.85; }
   .legend {
-    display: flex;
-    gap: 14px;
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin: 8px 0 14px;
-    flex-wrap: wrap;
+    display: flex; gap: 14px;
+    font-size: 11px; color: var(--text-secondary);
+    margin: 8px 0 14px; flex-wrap: wrap;
   }
   .chip { display: flex; align-items: center; gap: 5px; }
   .dot { width: 12px; height: 12px; border-radius: 3px; }
   .metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 1rem;
+    gap: 12px; margin-top: 1rem;
   }
   .metric {
     background: var(--bg-secondary);
-    border-radius: var(--radius-md);
-    padding: 14px;
+    border-radius: var(--radius-md); padding: 14px;
   }
-  .metric-lbl {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin: 0 0 4px;
-  }
-  .metric-val {
-    font-size: 22px;
-    font-weight: 500;
-    margin: 0;
-  }
-  .status {
-    font-size: 12px;
-    color: var(--text-secondary);
-    min-height: 18px;
-  }
+  .metric-lbl { font-size: 12px; color: var(--text-secondary); margin: 0 0 4px; }
+  .metric-val { font-size: 22px; font-weight: 500; margin: 0; }
+  .status { font-size: 12px; color: var(--text-secondary); min-height: 18px; }
   .warn { color: var(--danger); font-weight: 500; }
-  @media (max-width: 720px) {
+
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 170px repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .exec-hdr {
+    font-size: 11px;
+    color: var(--text-secondary);
+    padding: 8px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .exec-rowlbl {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .exec-cell {
+    background: var(--bg-primary);
+    border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-md);
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 72px;
+  }
+  .exec-cell:hover {
+    border-color: var(--accent);
+    background: var(--bg-secondary);
+  }
+  .exec-cell-ready {
+    background: var(--accent-light);
+    border-color: var(--accent);
+  }
+  .exec-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+  .exec-cell-ready .exec-icon {
+    background: var(--accent);
+    color: #E1F5EE;
+  }
+  .exec-cell-label { font-size: 11px; color: var(--text-secondary); }
+  .exec-cell-ready .exec-cell-label { color: var(--accent); font-weight: 500; }
+
+  .panel {
+    margin-top: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid var(--border-tertiary);
+  }
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .panel-title { font-size: 15px; font-weight: 500; margin: 0; }
+  .panel-close {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+  }
+  .panel-close:hover { color: var(--text-primary); background: transparent; }
+  textarea, input[type="text"], input[type="url"] {
+    width: 100%;
+    background: var(--bg-primary);
+    border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-primary);
+    resize: vertical;
+    line-height: 1.6;
+  }
+  textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .panel-field { margin-bottom: 12px; }
+  .panel-field-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    display: block;
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr auto;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .contact-row input { font-size: 12px; padding: 6px 8px; }
+  .contact-remove {
+    background: transparent;
+    border: 0.5px solid var(--border-tertiary);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .contact-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr auto;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    padding: 0 8px;
+  }
+  .panel-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .copy-note { font-size: 11px; color: var(--text-tertiary); margin-top: 6px; }
+  @media (max-width: 820px) {
     .container { padding: 1rem; }
-    .grid { grid-template-columns: 130px repeat(4, 1fr); }
+    .fit-grid { grid-template-columns: 130px repeat(4, 1fr); }
+    .exec-grid { grid-template-columns: 110px repeat(4, 1fr); }
     .lbl { min-width: 120px; font-size: 12px; }
     .rowlbl { font-size: 11px; }
     .cell { font-size: 11px; padding: 8px 4px; }
     .metrics { grid-template-columns: 1fr; }
+    .contact-row, .contact-header { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -263,61 +358,88 @@
 
 <div class="container">
 
-  <div class="section">
-    <p class="sec-h">The week</p>
-    <p class="sec-sub">Forty hours, allocated across ventures. Drag to reallocate.</p>
+  <div class="tabs">
+    <button class="tab active" data-view="alignment">Offer alignment</button>
+    <button class="tab" data-view="execution">Execution</button>
+  </div>
 
-    <div class="row"><span class="lbl">BlackTech Capital</span><input type="range" id="h-btc" min="0" max="40" value="10" step="1"><span class="val" id="h-btc-out">10h</span></div>
-    <div class="row"><span class="lbl">Prismm (anchor)</span><input type="range" id="h-prismm" min="0" max="40" value="15" step="1"><span class="val" id="h-prismm-out">15h</span></div>
-    <div class="row"><span class="lbl">Super Connector dev</span><input type="range" id="h-sc" min="0" max="40" value="2" step="1"><span class="val" id="h-sc-out">2h</span></div>
-    <div class="row"><span class="lbl">ReRev pipeline</span><input type="range" id="h-pipe" min="0" max="40" value="8" step="1"><span class="val" id="h-pipe-out">8h</span></div>
-    <div class="row"><span class="lbl">ReRev content</span><input type="range" id="h-content" min="0" max="40" value="3" step="1"><span class="val" id="h-content-out">3h</span></div>
-    <div class="row"><span class="lbl">New client delivery</span><input type="range" id="h-new" min="0" max="40" value="2" step="1"><span class="val" id="h-new-out">2h</span></div>
+  <div id="view-alignment">
 
-    <div style="margin-top: 1.25rem;">
-      <div class="bar" id="bar"></div>
-      <div class="bar-meta">
-        <span>Total allocated: <strong id="total">40h</strong> of 40h</span>
-        <span id="warn" class="warn"></span>
+    <div class="section">
+      <p class="sec-h">The week</p>
+      <p class="sec-sub">Forty hours, allocated across ventures. Drag to reallocate.</p>
+
+      <div class="row"><span class="lbl">BlackTech Capital</span><input type="range" id="h-btc" min="0" max="40" value="10" step="1"><span class="val" id="h-btc-out">10h</span></div>
+      <div class="row"><span class="lbl">Prismm (anchor)</span><input type="range" id="h-prismm" min="0" max="40" value="15" step="1"><span class="val" id="h-prismm-out">15h</span></div>
+      <div class="row"><span class="lbl">Super Connector dev</span><input type="range" id="h-sc" min="0" max="40" value="2" step="1"><span class="val" id="h-sc-out">2h</span></div>
+      <div class="row"><span class="lbl">ReRev pipeline</span><input type="range" id="h-pipe" min="0" max="40" value="8" step="1"><span class="val" id="h-pipe-out">8h</span></div>
+      <div class="row"><span class="lbl">ReRev content</span><input type="range" id="h-content" min="0" max="40" value="3" step="1"><span class="val" id="h-content-out">3h</span></div>
+      <div class="row"><span class="lbl">New client delivery</span><input type="range" id="h-new" min="0" max="40" value="2" step="1"><span class="val" id="h-new-out">2h</span></div>
+
+      <div style="margin-top: 1.25rem;">
+        <div class="bar" id="bar"></div>
+        <div class="bar-meta">
+          <span>Total allocated: <strong id="total">40h</strong> of 40h</span>
+          <span id="warn" class="warn"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="sec-h">The ICP fit grid</p>
+      <p class="sec-sub">Click a cell to cycle its score. Four audiences, seven service lines.</p>
+
+      <div class="legend">
+        <span class="chip"><span class="dot" style="background: #0F6E56;"></span>Strongest</span>
+        <span class="chip"><span class="dot" style="background: #9FE1CB;"></span>Strong</span>
+        <span class="chip"><span class="dot" style="background: #FAEEDA;"></span>Possible</span>
+        <span class="chip"><span class="dot" style="background: #F1EFE8;"></span>Weak</span>
+        <span class="chip"><span class="dot" style="background: transparent; border: 0.5px dashed var(--border-secondary);"></span>Not pitching</span>
+      </div>
+
+      <div class="fit-grid">
+        <div></div>
+        <div class="hdr">Marketing<br>agencies</div>
+        <div class="hdr">Fractional<br>execs</div>
+        <div class="hdr">Boutique<br>advisory</div>
+        <div class="hdr">Interim<br>leaders</div>
+      </div>
+      <div id="grid-body" class="fit-grid"></div>
+    </div>
+
+    <div class="section">
+      <p class="sec-h">The revenue mix</p>
+      <p class="sec-sub">Anchor plus target pipeline toward the monthly $28K goal.</p>
+
+      <div class="row"><span class="lbl">Anchor (Prismm)</span><input type="range" id="r-anchor" min="2500" max="10000" value="2500" step="500"><span class="val" id="r-anchor-out">$2,500</span></div>
+      <div class="row"><span class="lbl">One-off projects</span><input type="range" id="r-oneoff" min="0" max="30000" value="15000" step="1000"><span class="val" id="r-oneoff-out">$15,000</span></div>
+      <div class="row"><span class="lbl">Tapestry sessions</span><input type="range" id="r-tap" min="0" max="10000" value="0" step="500"><span class="val" id="r-tap-out">$0</span></div>
+      <div class="row"><span class="lbl">Content / subscriptions</span><input type="range" id="r-content" min="0" max="10000" value="0" step="500"><span class="val" id="r-content-out">$0</span></div>
+
+      <div class="metrics">
+        <div class="metric"><p class="metric-lbl">Monthly total</p><p class="metric-val" id="r-total">$17,500</p></div>
+        <div class="metric"><p class="metric-lbl">Goal gap</p><p class="metric-val" id="r-gap">$10,500</p></div>
+        <div class="metric"><p class="metric-lbl">% to goal</p><p class="metric-val" id="r-pct">63%</p></div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <p class="sec-h">The ICP fit grid</p>
-    <p class="sec-sub">Click a cell to cycle its score. Four audiences, seven service lines.</p>
+  <div id="view-execution" style="display: none;">
 
-    <div class="legend">
-      <span class="chip"><span class="dot" style="background: #0F6E56;"></span>Strongest</span>
-      <span class="chip"><span class="dot" style="background: #9FE1CB;"></span>Strong</span>
-      <span class="chip"><span class="dot" style="background: #FAEEDA;"></span>Possible</span>
-      <span class="chip"><span class="dot" style="background: #F1EFE8;"></span>Weak</span>
-      <span class="chip"><span class="dot" style="background: transparent; border: 0.5px dashed var(--border-secondary);"></span>Not pitching</span>
-    </div>
+    <div class="section">
+      <p class="sec-h">The execution matrix</p>
+      <p class="sec-sub">For each ICP, click a cell to add the sub-landing-page, email template, contacts, or Cowork brief. Cells light up green once filled.</p>
 
-    <div class="grid">
-      <div></div>
-      <div class="hdr">Marketing<br>agencies</div>
-      <div class="hdr">Fractional<br>execs</div>
-      <div class="hdr">Boutique<br>advisory</div>
-      <div class="hdr">Interim<br>leaders</div>
-    </div>
-    <div id="grid-body" class="grid"></div>
-  </div>
+      <div class="exec-grid">
+        <div></div>
+        <div class="exec-hdr">Sub-landing page</div>
+        <div class="exec-hdr">Email template</div>
+        <div class="exec-hdr">Contacts</div>
+        <div class="exec-hdr">Cowork brief</div>
+      </div>
+      <div id="exec-body" class="exec-grid"></div>
 
-  <div class="section">
-    <p class="sec-h">The revenue mix</p>
-    <p class="sec-sub">Anchor plus target pipeline toward the monthly $28K goal.</p>
-
-    <div class="row"><span class="lbl">Anchor (Prismm)</span><input type="range" id="r-anchor" min="2500" max="10000" value="2500" step="500"><span class="val" id="r-anchor-out">$2,500</span></div>
-    <div class="row"><span class="lbl">One-off projects</span><input type="range" id="r-oneoff" min="0" max="30000" value="15000" step="1000"><span class="val" id="r-oneoff-out">$15,000</span></div>
-    <div class="row"><span class="lbl">Tapestry sessions</span><input type="range" id="r-tap" min="0" max="10000" value="0" step="500"><span class="val" id="r-tap-out">$0</span></div>
-    <div class="row"><span class="lbl">Content / subscriptions</span><input type="range" id="r-content" min="0" max="10000" value="0" step="500"><span class="val" id="r-content-out">$0</span></div>
-
-    <div class="metrics">
-      <div class="metric"><p class="metric-lbl">Monthly total</p><p class="metric-val" id="r-total">$17,500</p></div>
-      <div class="metric"><p class="metric-lbl">Goal gap</p><p class="metric-val" id="r-gap">$10,500</p></div>
-      <div class="metric"><p class="metric-lbl">% to goal</p><p class="metric-val" id="r-pct">63%</p></div>
+      <div id="exec-panel"></div>
     </div>
   </div>
 
@@ -342,6 +464,12 @@
     'AI consulting / advisory'
   ];
   const AUDIENCES = ['agencies','fractionals','advisory','interim'];
+  const AUDIENCE_LABELS = {
+    agencies: 'Marketing agencies',
+    fractionals: 'Fractional execs',
+    advisory: 'Boutique advisory',
+    interim: 'Interim leaders'
+  };
   const DEFAULT_GRID = [
     [3,4,2,4],
     [4,3,0,3],
@@ -357,7 +485,25 @@
   const HOUR_LABELS = { btc:'BTC', prismm:'Prismm', sc:'SC dev', pipe:'Pipeline', content:'Content', new:'New delivery' };
   const HOUR_TEXT_COLORS = { btc:'#042C53', prismm:'#04342C', sc:'#26215C', pipe:'#412402', content:'#4A1B0C', new:'#4B1528' };
 
+  const EXEC_COLS = [
+    { key: 'landing', label: 'Sub-landing page' },
+    { key: 'email', label: 'Email template' },
+    { key: 'contacts', label: 'Contacts' },
+    { key: 'brief', label: 'Cowork brief' }
+  ];
+
+  const DEFAULT_EXEC = {};
+  AUDIENCES.forEach(aud => {
+    DEFAULT_EXEC[aud] = {
+      landing: '',
+      email: { subject: '', body: '' },
+      contacts: [],
+      brief: ''
+    };
+  });
+
   let gridState = DEFAULT_GRID.map(r => r.slice());
+  let execState = JSON.parse(JSON.stringify(DEFAULT_EXEC));
 
   function renderGrid(){
     const body = document.getElementById('grid-body');
@@ -381,6 +527,170 @@
       });
     });
   }
+
+  function cellIsReady(aud, key){
+    const v = execState[aud][key];
+    if (key === 'landing' || key === 'brief') return v && v.trim().length > 0;
+    if (key === 'email') return v && (v.subject.trim().length > 0 || v.body.trim().length > 0);
+    if (key === 'contacts') return v && v.length > 0;
+    return false;
+  }
+
+  function cellSummary(aud, key){
+    const v = execState[aud][key];
+    if (key === 'landing') return v ? 'URL set' : 'Not set';
+    if (key === 'email') {
+      const hasSubject = v.subject && v.subject.trim();
+      const hasBody = v.body && v.body.trim();
+      if (hasSubject && hasBody) return 'Ready';
+      if (hasSubject || hasBody) return 'In progress';
+      return 'Empty';
+    }
+    if (key === 'contacts') return v.length ? v.length + (v.length === 1 ? ' contact' : ' contacts') : 'Empty';
+    if (key === 'brief') return v && v.trim() ? 'Ready' : 'Empty';
+    return '';
+  }
+
+  function renderExec(){
+    const body = document.getElementById('exec-body');
+    body.innerHTML = '';
+    AUDIENCES.forEach(aud => {
+      const rowlbl = document.createElement('div');
+      rowlbl.className = 'exec-rowlbl';
+      rowlbl.textContent = AUDIENCE_LABELS[aud];
+      body.appendChild(rowlbl);
+      EXEC_COLS.forEach(col => {
+        const cell = document.createElement('div');
+        cell.className = 'exec-cell' + (cellIsReady(aud, col.key) ? ' exec-cell-ready' : '');
+        const icon = document.createElement('div');
+        icon.className = 'exec-icon';
+        icon.textContent = cellIsReady(aud, col.key) ? '\u2713' : '+';
+        cell.appendChild(icon);
+        const lbl = document.createElement('div');
+        lbl.className = 'exec-cell-label';
+        lbl.textContent = cellSummary(aud, col.key);
+        cell.appendChild(lbl);
+        cell.onclick = () => openCellPanel(aud, col.key);
+        body.appendChild(cell);
+      });
+    });
+  }
+
+  function closePanel(){
+    document.getElementById('exec-panel').innerHTML = '';
+  }
+
+  function openCellPanel(aud, key){
+    const panel = document.getElementById('exec-panel');
+    const col = EXEC_COLS.find(c => c.key === key);
+    const audLbl = AUDIENCE_LABELS[aud];
+
+    let content = '';
+    if (key === 'landing') {
+      content = '<div class="panel-field">' +
+        '<label class="panel-field-label">Sub-landing page URL</label>' +
+        '<input type="url" id="inp-landing" value="' + escapeHtml(execState[aud].landing) + '" placeholder="https://rerev.io/fractionals">' +
+        '</div>' +
+        '<div class="panel-actions">' +
+          '<button class="primary" onclick="window._tapSaveLanding(\'' + aud + '\')">Save</button>' +
+          '<button onclick="window._tapClosePanel()">Cancel</button>' +
+        '</div>';
+    } else if (key === 'email') {
+      content = '<div class="panel-field">' +
+        '<label class="panel-field-label">Subject line</label>' +
+        '<input type="text" id="inp-subject" value="' + escapeHtml(execState[aud].email.subject) + '" placeholder="Quick question about your ops">' +
+        '</div>' +
+        '<div class="panel-field">' +
+        '<label class="panel-field-label">Email body (five-move template)</label>' +
+        '<textarea id="inp-body" rows="14" placeholder="1. The commend&#10;2. The identity line&#10;3. The thesis neighbor framing&#10;4. The ask&#10;5. The sign-off">' + escapeHtml(execState[aud].email.body) + '</textarea>' +
+        '</div>' +
+        '<div class="panel-actions">' +
+          '<button class="primary" onclick="window._tapSaveEmail(\'' + aud + '\')">Save</button>' +
+          '<button onclick="window._tapCopyEmail(\'' + aud + '\')">Copy</button>' +
+          '<button onclick="window._tapClosePanel()">Cancel</button>' +
+        '</div>' +
+        '<p class="copy-note">Five moves: commend, identity line, thesis neighbor framing, ask, sign-off.</p>';
+    } else if (key === 'contacts') {
+      const rows = execState[aud].contacts.map((c, i) => {
+        return '<div class="contact-row">' +
+          '<input type="text" placeholder="Name" value="' + escapeHtml(c.name || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'name\', this.value)">' +
+          '<input type="text" placeholder="Title" value="' + escapeHtml(c.title || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'title\', this.value)">' +
+          '<input type="text" placeholder="Org" value="' + escapeHtml(c.org || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'org\', this.value)">' +
+          '<input type="text" placeholder="Signal / hook" value="' + escapeHtml(c.signal || '') + '" onchange="window._tapUpdateContact(\'' + aud + '\', ' + i + ', \'signal\', this.value)">' +
+          '<button class="contact-remove" onclick="window._tapRemoveContact(\'' + aud + '\', ' + i + ')">Remove</button>' +
+          '</div>';
+      }).join('');
+      content = '<div class="contact-header">' +
+          '<span>Name</span><span>Title</span><span>Org</span><span>Signal / hook</span><span></span>' +
+        '</div>' +
+        '<div id="contact-list">' + rows + '</div>' +
+        '<div class="panel-actions">' +
+          '<button class="primary" onclick="window._tapAddContact(\'' + aud + '\')">Add contact</button>' +
+          '<button onclick="window._tapClosePanel()">Done</button>' +
+        '</div>';
+    } else if (key === 'brief') {
+      content = '<div class="panel-field">' +
+        '<label class="panel-field-label">Cowork brief (copy this into a Cowork session for this ICP)</label>' +
+        '<textarea id="inp-brief" rows="16" placeholder="ICP definition, moment signals, service line, sourcing instructions, email template reference, approval pause point, push-to-drafts instructions...">' + escapeHtml(execState[aud].brief) + '</textarea>' +
+        '</div>' +
+        '<div class="panel-actions">' +
+          '<button class="primary" onclick="window._tapSaveBrief(\'' + aud + '\')">Save</button>' +
+          '<button onclick="window._tapCopyBrief(\'' + aud + '\')">Copy</button>' +
+          '<button onclick="window._tapClosePanel()">Cancel</button>' +
+        '</div>';
+    }
+
+    panel.innerHTML = '<div class="panel">' +
+      '<div class="panel-header">' +
+        '<p class="panel-title">' + audLbl + ' \u00B7 ' + col.label + '</p>' +
+        '<button class="panel-close" onclick="window._tapClosePanel()">\u00D7</button>' +
+      '</div>' +
+      content +
+      '</div>';
+  }
+
+  function escapeHtml(s){
+    if (!s) return '';
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  window._tapSaveLanding = function(aud){
+    execState[aud].landing = document.getElementById('inp-landing').value;
+    renderExec(); closePanel(); setStatus('Saved.');
+  };
+  window._tapSaveEmail = function(aud){
+    execState[aud].email.subject = document.getElementById('inp-subject').value;
+    execState[aud].email.body = document.getElementById('inp-body').value;
+    renderExec(); closePanel(); setStatus('Saved.');
+  };
+  window._tapCopyEmail = function(aud){
+    const s = document.getElementById('inp-subject').value;
+    const b = document.getElementById('inp-body').value;
+    const txt = 'Subject: ' + s + '\n\n' + b;
+    navigator.clipboard.writeText(txt).then(() => setStatus('Copied.'));
+  };
+  window._tapSaveBrief = function(aud){
+    execState[aud].brief = document.getElementById('inp-brief').value;
+    renderExec(); closePanel(); setStatus('Saved.');
+  };
+  window._tapCopyBrief = function(aud){
+    const txt = document.getElementById('inp-brief').value;
+    navigator.clipboard.writeText(txt).then(() => setStatus('Copied.'));
+  };
+  window._tapAddContact = function(aud){
+    execState[aud].contacts.push({ name: '', title: '', org: '', signal: '' });
+    openCellPanel(aud, 'contacts');
+  };
+  window._tapRemoveContact = function(aud, i){
+    execState[aud].contacts.splice(i, 1);
+    renderExec();
+    openCellPanel(aud, 'contacts');
+  };
+  window._tapUpdateContact = function(aud, i, field, value){
+    execState[aud].contacts[i][field] = value;
+    renderExec();
+  };
+  window._tapClosePanel = closePanel;
 
   function getHours(){
     return {
@@ -454,23 +764,26 @@
       hours: getHours(),
       grid: gridState,
       revenue: getRevenue(),
+      exec: execState,
       savedAt: new Date().toISOString()
     };
     try {
-      localStorage.setItem('rerev_tapestry_v1', JSON.stringify(state));
+      localStorage.setItem('rerev_tapestry_v2', JSON.stringify(state));
       setStatus('Saved.');
     } catch(e){ setStatus('Save failed.'); }
   }
 
   function loadState(){
     try {
-      const raw = localStorage.getItem('rerev_tapestry_v1');
+      let raw = localStorage.getItem('rerev_tapestry_v2');
+      if (!raw) raw = localStorage.getItem('rerev_tapestry_v1');
       if (!raw) { setStatus('No saved state.'); return; }
       const state = JSON.parse(raw);
       Object.keys(state.hours).forEach(k => { document.getElementById('h-'+k).value = state.hours[k]; });
       Object.keys(state.revenue).forEach(k => { document.getElementById('r-'+k).value = state.revenue[k]; });
       gridState = state.grid;
-      updateHours(); updateRevenue(); renderGrid();
+      if (state.exec) execState = state.exec;
+      updateHours(); updateRevenue(); renderGrid(); renderExec();
       setStatus('Loaded from '+new Date(state.savedAt).toLocaleString());
     } catch(e){ setStatus('Load failed.'); }
   }
@@ -479,7 +792,9 @@
     Object.keys(DEFAULT_HOURS).forEach(k => { document.getElementById('h-'+k).value = DEFAULT_HOURS[k]; });
     Object.keys(DEFAULT_REVENUE).forEach(k => { document.getElementById('r-'+k).value = DEFAULT_REVENUE[k]; });
     gridState = DEFAULT_GRID.map(r => r.slice());
-    updateHours(); updateRevenue(); renderGrid();
+    execState = JSON.parse(JSON.stringify(DEFAULT_EXEC));
+    updateHours(); updateRevenue(); renderGrid(); renderExec();
+    closePanel();
     setStatus('Reset.');
   }
 
@@ -488,6 +803,7 @@
       hours: getHours(),
       grid: gridState,
       revenue: getRevenue(),
+      exec: execState,
       exportedAt: new Date().toISOString()
     };
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
@@ -500,6 +816,17 @@
     setStatus('Exported.');
   }
 
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.onclick = () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const view = tab.dataset.view;
+      document.getElementById('view-alignment').style.display = view === 'alignment' ? 'block' : 'none';
+      document.getElementById('view-execution').style.display = view === 'execution' ? 'block' : 'none';
+      if (view === 'execution') closePanel();
+    };
+  });
+
   ['h-btc','h-prismm','h-sc','h-pipe','h-content','h-new'].forEach(id => {
     document.getElementById(id).addEventListener('input', updateHours);
   });
@@ -511,7 +838,10 @@
   document.getElementById('btn-reset').onclick = resetState;
   document.getElementById('btn-export').onclick = exportState;
 
-  renderGrid(); updateHours(); updateRevenue();
+  renderGrid();
+  renderExec();
+  updateHours();
+  updateRevenue();
 })();
 </script>
 
