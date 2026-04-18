@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "hours": {
+    "btc": 10,
+    "prismm": 15,
+    "sc": 2,
+    "pipe": 8,
+    "content": 3,
+    "new": 2
+  },
+  "grid": [
+    [3, 4, 2, 4],
+    [4, 3, 0, 3],
+    [3, 4, 2, 4],
+    [4, 3, 2, 2],
+    [2, 2, 0, 2],
+    [2, 3, 0, 3],
+    [3, 3, 2, 3]
+  ],
+  "gridRowLabels": [
+    "Claude-native automation",
+    "Gmail outreach infra",
+    "Google Apps Script systems",
+    "Content automation",
+    "Workshop delivery",
+    "Custom CRM builds",
+    "AI consulting / advisory"
+  ],
+  "gridColumnLabels": [
+    "Marketing agencies",
+    "Fractional execs",
+    "Boutique advisory",
+    "Interim leaders"
+  ],
+  "scoreLegend": [
+    "Not pitching",
+    "Weak",
+    "Possible",
+    "Strong",
+    "Strongest"
+  ],
+  "revenue": {
+    "anchor": 2500,
+    "oneoff": 15000,
+    "tap": 0,
+    "content": 0
+  },
+  "monthlyGoal": 28000
+}
