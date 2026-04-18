@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.0 — 2026-04-18
+
+Warm path column added to Execution matrix.
+
+- New "Warm path" column between Email template and Contacts, making 5 execution columns total
+- Each ICP's Warm path cell contains: connector profile, ask-to-forward template, forwardable email (subject + body), and a saved list of warm contacts (name, LinkedIn, email)
+- Forwardable email follows the 5-part structure from the forwardable-email skill
+- Warm contacts persist per ICP and can be added, edited, or removed
+- Copy buttons on ask and forwardable for fast paste to Gmail
+- Note added on Offer Alignment tab pointing users to the Warm path on Execution
+
 ## v3.0 — 2026-04-18
 
 Measure tab added. The feedback loop.
