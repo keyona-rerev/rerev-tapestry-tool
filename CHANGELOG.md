@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.0 — 2026-04-18
+
+Measure tab added. The feedback loop.
+
+- New Measure tab with round-based tracking
+- Each round has its own targets and actuals per ICP per metric (replies, calls, proposals, closed, revenue)
+- Round pills let you switch between rounds, add new rounds, rename rounds
+- New rounds default targets to the previous round's targets
+- Round totals with color-coded percentage (green ≥80%, amber ≥40%, red below)
+- Refactor signals checklist with 8 prebuilt diagnostic signals
+- Auto-warning when 3 or more refactor signals are flagged
+- Execution tab gets an Output defined checklist showing ICP row completion state
+- "Execution complete" banner with handoff to Measure when all four ICP rows are populated
+
 ## v2.0 — 2026-04-18
 
 Execution mode added.
